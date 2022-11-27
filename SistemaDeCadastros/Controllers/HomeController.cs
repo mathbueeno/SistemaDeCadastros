@@ -15,12 +15,8 @@ namespace SistemaDeCadastros.Controllers
 
         public IActionResult Index()
         {
-            HomeModel home = new HomeModel();
-
-            home.Nome = "Matheus de Abreu";
-            home.Email = "mathbueeno@gmail.com";
-
-            return View(home);
+           
+            return View();
         }
 
         public IActionResult Privacy()
