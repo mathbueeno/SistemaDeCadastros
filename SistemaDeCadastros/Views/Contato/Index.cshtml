@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ContatoModel>
 @{
     ViewData["Title"] = "Lista de Contatos";
 }
@@ -21,44 +21,27 @@
       <th scope="col"></th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>mark@gmail.com</td>
-      <td>9 052158614</td>
-    <td>
-      <div class="btn-group" role="group">
-          <a role="button" class="btn btn-danger" asp-controller="Contato" asp-action="ApagarContato">Apagar</a>
-          <a role="button" class="btn btn-warning" asp-controller="Contato" asp-action="EditarContato">Editar</a>
-      </div>
-    </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton@gmail.comtd>
-      <td>9 12478547</td>
-      <td>
-      <div class="btn-group" role="group">
-          <a role="button" class="btn btn-danger" asp-controller="Contato" asp-action="ApagarContato">Apagar</a>
-          <a role="button" class="btn btn-warning" asp-controller="Contato" asp-action="EditarContato">Editar</a>
-      </div>
-    </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>Themark@gmail.com</td>
-      <td>11 98994745</td>
-      <td>
-      <div class="btn-group" role="group">
-          <a role="button" class="btn btn-danger" asp-controller="Contato" asp-action="ApagarContato">Apagar</a>
-          <a role="button" class="btn btn-warning" asp-controller="Contato" asp-action="EditarContato">Editar</a>
-      </div>
-    </td>
-    </tr>
-  </tbody>
+  
+        <tbody>
+            @if(Model != null && Model.Any())
+            {
+                foreach (var contato in Model)
+                {
+                     <tr>
+                         <th scope="row">@contato.Id</th>
+                         <td>@contato.NomeContato</td>
+                         <td>@contato.Email</td>
+                         <td>@contato.Telefone</td>
+                         <td>
+                          <div class="btn-group" role="group">
+                              <a role="button" class="btn btn-danger" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="ApagarContato">Apagar</a>
+                              <a role="button" class="btn btn-warning" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="EditarContato">Editar</a>
+                          </div>
+                         </td>
+                     </tr>
+                }
+            }
+        </tbody>
 </table>
     
 

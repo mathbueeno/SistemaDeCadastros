@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaDeCadastros.Data;
+using SistemaDeCadastros.Repositorios;
 
 namespace SistemaDeCadastros
 {
@@ -15,6 +16,8 @@ namespace SistemaDeCadastros
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Database"));
             });
+
+            builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
 
             var app = builder.Build();
 
