@@ -54,7 +54,12 @@ namespace SistemaDeCadastros.Repositorios
             return usuarioDb;
         }
 
-        public List<UsuarioModel> BuscarTodos()
+		public UsuarioModel BuscarPorLogin(string login)
+		{
+            return _dataContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+        }
+
+		public List<UsuarioModel> BuscarTodos()
         {
             return _dataContext.Usuarios.ToList();
         }

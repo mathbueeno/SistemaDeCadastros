@@ -4,6 +4,7 @@ namespace SistemaDeCadastros.Repositorios
 {
     public interface IUsuarioRepositorio
     {
+        UsuarioModel BuscarPorLogin(string login);
         UsuarioModel ListarPorId(int id);
 
         List<UsuarioModel> BuscarTodos();

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaDeCadastros.Data;
+using SistemaDeCadastros.Helper;
 using SistemaDeCadastros.Repositorios;
 
 namespace SistemaDeCadastros
@@ -17,8 +18,19 @@ namespace SistemaDeCadastros
                 options.UseSqlServer(builder.Configuration.GetConnectionString("Database"));
             });
 
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            builder.Services.AddScoped<ISessao, Sessao>();
+
+            builder.Services.AddSession(o =>
+			{
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+			});
+
+
 
             var app = builder.Build();
 
@@ -36,6 +48,8 @@ namespace SistemaDeCadastros
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",
