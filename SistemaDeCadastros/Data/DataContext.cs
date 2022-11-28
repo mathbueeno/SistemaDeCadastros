@@ -8,5 +8,7 @@ namespace SistemaDeCadastros.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<ContatoModel> Contatos { get; set; }
+
+        public DbSet<UsuarioModel> Usuarios { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace SistemaDeCadastros
             });
 
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            builder.Services.AddScoped<IUsuarioRepositorio, IUsuarioRepositorio>();
 
             var app = builder.Build();
 

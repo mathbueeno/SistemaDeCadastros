@@ -1,6 +1,11 @@
 ﻿
 $(document).ready(function () {
-    $('#table-contatos').DataTable({
+    getDatatable('#table-contatos');
+    getDatatable('#table-usuarios');
+});
+
+function getDatatable(id) {
+    $(id).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -28,7 +33,10 @@ $(document).ready(function () {
             }
         }
     });
-});
+}
+
+
+
 
 
 $('.close-alert').click(function () {
