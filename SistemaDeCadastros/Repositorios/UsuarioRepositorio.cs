@@ -15,6 +15,7 @@ namespace SistemaDeCadastros.Repositorios
         }
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
+            usuario.DataCadastro = DateTime.Now;
             _dataContext.Usuarios.Add(usuario);
             _dataContext.SaveChanges();
 

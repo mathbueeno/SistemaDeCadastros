@@ -18,7 +18,7 @@ namespace SistemaDeCadastros
             });
 
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
-            builder.Services.AddScoped<IUsuarioRepositorio, IUsuarioRepositorio>();
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             var app = builder.Build();
 
@@ -39,7 +39,7 @@ namespace SistemaDeCadastros
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Login}/{action=Index}/{id?}");
 
             app.Run();
         }
