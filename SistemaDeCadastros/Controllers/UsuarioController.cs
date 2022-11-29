@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaDeCadastros.Filters;
 using SistemaDeCadastros.Models;
 using SistemaDeCadastros.Repositorios;
 
 namespace SistemaDeCadastros.Controllers
 {
+    [PaginaRestritaAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;

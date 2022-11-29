@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaDeCadastros.Filters;
 using SistemaDeCadastros.Models;
 using System.Diagnostics;
 
 namespace SistemaDeCadastros.Controllers
 {
+    [PaginaUsuarioLogado]
     public class HomeController : Controller
     {
         //private readonly ILogger<HomeController> _logger;
