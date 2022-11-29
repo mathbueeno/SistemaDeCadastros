@@ -1,10 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaDeCadastros.Helper;
 using SistemaDeCadastros.Models;
+using SistemaDeCadastros.Repositorios;
 
 namespace SistemaDeCadastros.Controllers
 {
     public class AlterarSenhaController : Controller
     {
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly ISessao _sessao;
+
+        public AlterarSenhaController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
+        {
+            _usuarioRepositorio = usuarioRepositorio;
+            _sessao = sessao;
+        }
         public IActionResult Index()
         {
             return View();
@@ -15,8 +25,13 @@ namespace SistemaDeCadastros.Controllers
         {
             try
             {
+                UsuarioModel usuario = _sessao.BuscarSessaoUsuario();
+                alterarSenhaModel.Id = usuario.Id;
+
                 if (ModelState.IsValid)
                 {
+                    
+                    _usuarioRepositorio.AlterarSenha(alterarSenhaModel);
                     TempData["MensagemSucesso"] = "Senha alterada com sucesso!";
                     return View("Index", alterarSenhaModel);
                 }

@@ -42,5 +42,10 @@ namespace SistemaDeCadastros.Models
             Senha = novaSenha.GerarHash();
             return novaSenha;
         }
+
+        public void SetNovaSenha(string novaSenha)
+        {
+            Senha = novaSenha.GerarHash();
+        }
     }
 }
