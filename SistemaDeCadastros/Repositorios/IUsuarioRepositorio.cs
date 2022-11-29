@@ -4,6 +4,8 @@ namespace SistemaDeCadastros.Repositorios
 {
     public interface IUsuarioRepositorio
     {
+        UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenhaModel);
+        UsuarioModel BuscarPorEmailELogin(string email, string login);
         UsuarioModel BuscarPorLogin(string login);
         UsuarioModel ListarPorId(int id);
 

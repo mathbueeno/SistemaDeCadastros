@@ -14,6 +14,15 @@
 
     }
 
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+
+    }
+
 
 
 <form asp-controller="Login" asp-action="Entrar" method="post">

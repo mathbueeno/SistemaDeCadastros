@@ -24,6 +24,12 @@ namespace SistemaDeCadastros.Repositorios
             return usuario;
         }
 
+        public UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenhaModel)
+        {
+            UsuarioModel usuarioDB = ListarPorId(alterarSenhaModel.Id);
+            if (usuarioDB == null) throw new Exception("Houve um erro na atualização da senha, usuário não foi encontrado");
+        }
+
         public bool Apagar(int id)
         {
             UsuarioModel usuarioDb = ListarPorId(id);
@@ -56,7 +62,12 @@ namespace SistemaDeCadastros.Repositorios
             return usuarioDb;
         }
 
-		public UsuarioModel BuscarPorLogin(string login)
+        public UsuarioModel BuscarPorEmailELogin(string email, string login)
+        {
+            return _dataContext.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
+        }
+
+        public UsuarioModel BuscarPorLogin(string login)
 		{
             return _dataContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
         }
