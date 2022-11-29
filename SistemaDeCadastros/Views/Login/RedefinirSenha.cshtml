@@ -1,7 +1,7 @@
 ﻿@model LoginModel
 @{
 	Layout = "_LayoutDeslogada";
-	ViewData["Title"] = "Login";
+	ViewData["Title"] = "Redefinir Senha";
 }
 
 @if (TempData["MensagemErro"] != null)
@@ -30,10 +30,6 @@
     @Html.ValidationMessageFor(x => x.Senha)
   </div>
 
-  <p class="mb-4 text-sm-center mx-auto">
-      Esqueceu sua senha?
-      <a asp-action="RedefinirSenha" asp-controller="Login" class="text-primary text-gradient">Redefinir minha senha</a>    
-  </p>
-
-  <button type="submit" class="btn btn-primary">Entrar</button>
+  <button type="submit" class="btn btn-primary">Redefinir a senha</button>
+  <a class="btn btn-secondary" asp-controller="Login" asp-action="Index" role="button">Voltar</a>
 </form>

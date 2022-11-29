@@ -1,4 +1,5 @@
 ﻿using SistemaDeCadastros.Data;
+using SistemaDeCadastros.Helper;
 using SistemaDeCadastros.Models;
 
 namespace SistemaDeCadastros.Repositorios
@@ -16,6 +17,7 @@ namespace SistemaDeCadastros.Repositorios
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
             usuario.DataCadastro = DateTime.Now;
+            usuario.SenhaHash();
             _dataContext.Usuarios.Add(usuario);
             _dataContext.SaveChanges();
 

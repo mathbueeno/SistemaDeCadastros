@@ -1,4 +1,5 @@
 ﻿using SistemaDeCadastros.Enums;
+using SistemaDeCadastros.Helper;
 using System.ComponentModel.DataAnnotations;
 
 namespace SistemaDeCadastros.Models
@@ -26,7 +27,13 @@ namespace SistemaDeCadastros.Models
 
         public bool SenhaValida(string senha)
 		{
-            return Senha == senha;
+            return Senha == senha.GerarHash();
 		}
+
+        // método de extensão
+        public void SenhaHash()
+        {
+            Senha = Senha.GerarHash();
+        }
     }
 }

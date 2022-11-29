@@ -14,7 +14,15 @@ namespace SistemaDeCadastros.Helper
 
             array = hash.ComputeHash(array);
 
+            var strHexa = new StringBuilder();
 
+            // laço de repetição
+            foreach (var item in array)
+            {
+                strHexa.Append(item.ToString("x2"));
+            }
+
+            return strHexa.ToString();
         }
     }
 }
